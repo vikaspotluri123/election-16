@@ -1,0 +1,19 @@
+{
+  "name": "election-16",
+  "version": "0.0.1",
+  "description": "",
+  "main": "build.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vikaspotluri123/election-16.git"
+  },
+  "author": "Vikas Potluri",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/vikaspotluri123/election-16/issues"
+  },
+  "homepage": "https://github.com/vikaspotluri123/election-16#readme"
+}
