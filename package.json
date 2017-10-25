@@ -20,5 +20,6 @@
     "chai": "^4.1.2",
     "chalk": "^2.2.0",
     "csv-parse": "^2.0.0",
+    "remove-accents": "^0.4.1"
   }
 }

@@ -2,6 +2,9 @@
 
 const assert = require('chai').assert;
 const censusParser = require('./lib/census-parser');
+const electionParser = require('./lib/election-parser');
+const verifyData = require('./lib/utils/comparinator');
+const mergeData = require('./lib/utils/merger');
 const loadMeta = require('./lib/meta');
 
 const errorHandler = require('./lib/error');
@@ -18,10 +21,17 @@ const popIndex = loadMeta(year);
 assert.isAtLeast(popIndex, 0, `Unable to find population info for ${year} in meta`);
 
 console.log('Parsing census data');
-dataOut = censusParser(year, popIndex);
+const popData = censusParser(year, popIndex);
+assert.ok(popData, 'Failed parsing census data');
 
 console.log('Parsing election data');
-/* // @todo
-const elecParser = new electionParser(year);
+const voteData = electionParser(year);
+assert.ok(voteData, 'Failed parsing election data');
 
-let electionData = electionParser.parse();*/
+console.log('Verifying integrity');
+assert.ok(verifyData({voteData},{popData}), 'Failed verification');
+console.log('Data seems valid');
+
+console.log('Merging data together');
+dataOut = mergeData(popData, voteData);
+assert.ok(dataOut, 'Unable to merge data');
