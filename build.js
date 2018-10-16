@@ -5,6 +5,7 @@ const censusParser = require('./lib/census-parser');
 const electionParser = require('./lib/election-parser');
 const verifyData = require('./lib/utils/comparinator');
 const mergeData = require('./lib/utils/merger');
+const flattenData = require('./lib/flatten-data');
 const loadMeta = require('./lib/meta');
 
 const errorHandler = require('./lib/error');
@@ -35,3 +36,6 @@ console.log('Data seems valid');
 console.log('Merging data together');
 dataOut = mergeData(popData, voteData);
 assert.ok(dataOut, 'Unable to merge data');
+
+console.log('Flattening data');
+dataOut = flattenData(dataOut);
