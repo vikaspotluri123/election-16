@@ -7,7 +7,7 @@ const verifyData = require('./lib/utils/comparinator');
 const mergeData = require('./lib/utils/merger');
 const flattenData = require('./lib/flatten-data');
 const loadMeta = require('./lib/meta');
-
+const write = require('./lib/write');
 const errorHandler = require('./lib/error');
 
 process.on('uncaughtException', errorHandler);
@@ -39,3 +39,6 @@ assert.ok(dataOut, 'Unable to merge data');
 
 console.log('Flattening data');
 dataOut = flattenData(dataOut);
+
+console.log('writing data to file');
+write.dataOnly(dataOut, true);

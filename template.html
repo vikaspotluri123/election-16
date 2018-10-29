@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Election 16 | Visualizations from the 2016 election</title>
+</head>
+
+<body>
+    <h1>Election 16 - Visualize the 2016 election</h1>
+    <div id="demo"></div>
+</body>
+<script async src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<script>window.electionData = {ELECTION_DATA};</script>
+<script>
+    window.addEventListener('load', function () {
+        console.log('Window loaded');
+        var options = {
+            chart: {type: 'bar'},
+            series: [{
+                name: 'ElectionData',
+                data: window.electionData.map(item => ({
+                    x: item.population,
+                    y: item.r
+                }))
+            }]
+        }
+        console.log('Building chart');
+        var chart = new ApexCharts(document.querySelector("#demo"), options);
+
+        console.log('rendering chart');
+        chart.render();
+        console.log('idle');
+    });
+</script>
+</html>
